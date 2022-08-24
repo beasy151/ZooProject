@@ -20,6 +20,7 @@ public class Zoo {
         }
     }
 
+    /*Меню выбора типа юзера (1-сотрудник, 2-посетитель)*/
     public static void runMainMenu() throws Exception {
         Scanner scanner = new Scanner(System.in);
 
@@ -48,6 +49,8 @@ public class Zoo {
         }
     }
 
+
+    /*Меню для работника*/
     private static void runWorkerMenu() {
         Scanner scanner = new Scanner(System.in);
 
@@ -66,6 +69,7 @@ public class Zoo {
         }
     }
 
+    /*Добавление нового животного работником, новый класс не создается!*/
     private static void addNewAnimalToZoo() {
         Scanner scanner = new Scanner(System.in);
 
@@ -81,6 +85,7 @@ public class Zoo {
 
     }
 
+    /*Меню для посетителя*/
     private static void runClientMenu() {
         while (true) {
             Scanner scanner = new Scanner(System.in);

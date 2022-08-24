@@ -8,6 +8,7 @@ public class Props {
     private static final String PATH_TO_PROPERTIES = "src/main/resources/config.properties";
 
 
+    /*Получение пароля из проперти*/
     public static String getPassword() {
         Properties props = new Properties();
         FileInputStream fis;
