@@ -20,6 +20,11 @@ public class Zoo {
         }
     }
 
+    /*Метод для теста*/
+    public static int getCountAnimalsAtList() {
+        return zooResidents.size();
+    }
+
     /*Меню выбора типа юзера (1-сотрудник, 2-посетитель)*/
     public static void runMainMenu() throws Exception {
         Scanner scanner = new Scanner(System.in);
@@ -30,14 +35,7 @@ public class Zoo {
             String inputNumberOfMenu = scanner.nextLine();
 
             if (inputNumberOfMenu.equals("1")) {
-                System.out.println("Введите пароль для работы в системе: ");
-                String inputPassword = scanner.nextLine();
-                if (inputPassword.equals(Props.getPassword())) {
-                    //запускаем меню для сотрудника
-                    runWorkerMenu();
-                } else {
-                    throw new Exception("Попытка взлома системы! Завершение работы программы");
-                }
+                checkPassword();
 
             } else if (inputNumberOfMenu.equals("2")) {
                 //Запускаем меню посетителя
@@ -49,6 +47,32 @@ public class Zoo {
         }
     }
 
+    private static void checkPassword() throws Exception {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Введите пароль для работы в системе: ");
+        String inputPassword = scanner.nextLine();
+        if (inputPassword.equals(Props.getPassword())) {
+            //запускаем меню для сотрудника
+            runWorkerMenu();
+        } else {
+            throw new Exception("Попытка взлома системы! Завершение работы программы");
+        }
+    }
+
+    /*Продублировал метод проверки пароля, чтобы его в TestNG погонять*/
+    public static Boolean checkInputPasswordisNotEmpty(String input) {
+        return (input.isEmpty()) ? false : true;
+    }
+
+    /*Аналогично метод для TestNG с Exception */
+    public static Boolean checkInputPasswordIsCorrect(String input) throws Exception {
+        if (input.equals(Props.getPassword())) {
+            //запускаем меню для сотрудника
+            return true;
+        } else {
+            throw new Exception("Попытка взлома системы! Завершение работы программы");
+        }
+    }
 
     /*Меню для работника*/
     private static void runWorkerMenu() {
